@@ -1,0 +1,93 @@
+{
+  "_from": "ng-toast",
+  "_id": "ng-toast@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-f8Ez/AXohpCDDofNPR8ZPfHDNIM=",
+  "_location": "/ng-toast",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng-toast",
+    "name": "ng-toast",
+    "escapedName": "ng-toast",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-toast/-/ng-toast-2.0.0.tgz",
+  "_shasum": "7fc133fc05e88690830e87cd3d1f193df1c33483",
+  "_spec": "ng-toast",
+  "_where": "C:\\Users\\suraj negi\\Desktop\\Angular JS",
+  "author": {
+    "name": "Tamer Aydin",
+    "url": "http://tamerayd.in"
+  },
+  "bugs": {
+    "url": "https://github.com/tameraydin/ngToast/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Tamer Aydin",
+      "url": "http://tamerayd.in"
+    },
+    {
+      "name": "Levi Thomason",
+      "url": "http://www.levithomason.com"
+    }
+  ],
+  "dependencies": {
+    "angular": ">=1.2.15 <1.6",
+    "angular-sanitize": ">=1.2.15 <1.6"
+  },
+  "deprecated": false,
+  "description": "Angular provider for toast notifications",
+  "devDependencies": {
+    "caniuse-db": "latest",
+    "colors": "^1.0.3",
+    "diff": "^1.0.8",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.2.0",
+    "grunt-banner": "^0.6.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-cssmin": "0.8.0",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-cssbeautifier": "^0.1.2",
+    "grunt-karma": "^0.12.1",
+    "grunt-sass": "^1.1.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "lodash": "^3.10.1",
+    "phantomjs-prebuilt": "^2.1.5"
+  },
+  "homepage": "http://tameraydin.github.io/ngToast",
+  "keywords": [
+    "angular",
+    "toast",
+    "message",
+    "notification",
+    "toastr"
+  ],
+  "license": "MIT",
+  "main": "dist/ngToast.js",
+  "name": "ng-toast",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tameraydin/ngToast.git"
+  },
+  "scripts": {
+    "test": "grunt karma"
+  },
+  "version": "2.0.0"
+}

@@ -1,0 +1,123 @@
+{
+  "_from": "@uirouter/core@5.0.13",
+  "_id": "@uirouter/core@5.0.13",
+  "_inBundle": false,
+  "_integrity": "sha512-/kC/47ag9uwouGXAgxpRe9j63QbkShddLgowXKifQVwtICfKBMquDe/3nFIPi+k6M9+1LEcRQ29EWGJo4ZoR2g==",
+  "_location": "/@uirouter/core",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@uirouter/core@5.0.13",
+    "name": "@uirouter/core",
+    "escapedName": "@uirouter%2fcore",
+    "scope": "@uirouter",
+    "rawSpec": "5.0.13",
+    "saveSpec": null,
+    "fetchSpec": "5.0.13"
+  },
+  "_requiredBy": [
+    "/@uirouter/angularjs"
+  ],
+  "_resolved": "https://registry.npmjs.org/@uirouter/core/-/core-5.0.13.tgz",
+  "_shasum": "e1b31626c393cbdd82651755ff1ce3fc55163fd0",
+  "_spec": "@uirouter/core@5.0.13",
+  "_where": "C:\\Users\\suraj negi\\Desktop\\Angular JS\\node_modules\\@uirouter\\angularjs",
+  "bugs": {
+    "url": "https://github.com/ui-router/core/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Nate Abele",
+      "email": "nate@radify.io",
+      "url": "https://radify.io"
+    },
+    {
+      "name": "Chris Thielen",
+      "url": "https://github.com/christopherthielen"
+    },
+    {
+      "name": "Tim Kindberg",
+      "url": "https://github.com/timkindberg"
+    },
+    {
+      "name": "Karsten Sperling",
+      "url": "https://github.com/ksperling"
+    }
+  ],
+  "deprecated": false,
+  "description": "UI-Router Core: Framework agnostic, State-based routing for JavaScript Single Page Apps",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.47",
+    "@types/jquery": "3.2.17",
+    "@uirouter/publish-scripts": "2.0.8",
+    "conventional-changelog": "^1.1.0",
+    "conventional-changelog-cli": "^1.1.1",
+    "core-js": "^2.4.1",
+    "dts-downlevel": "^0.3.0",
+    "fork-ts-checker-webpack-plugin": "^0.2.9",
+    "glob": "^7.1.2",
+    "jasmine-core": "^2.4.1",
+    "karma": "2.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-script-launcher": "~1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.9",
+    "npm-run-all": "^4.1.2",
+    "readline-sync": "^1.4.4",
+    "rollup": "^0.52.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-uglify": "^2.0.1",
+    "shelljs": "^0.7.0",
+    "shx": "^0.2.2",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.8.0",
+    "typescript": "2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://ui-router.github.io",
+  "jsnext:main": "lib-esm/index.js",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "name": "UIRouter Team",
+      "url": "https://github.com/ui-router?tab=members"
+    }
+  ],
+  "name": "@uirouter/core",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ui-router/core.git"
+  },
+  "scripts": {
+    "build": "run-s compile fixdts bundle fixmaps:*",
+    "bundle": "rollup -c && rollup -c --environment MINIFY",
+    "changelog": "update_changelog",
+    "clean": "shx rm -rf lib lib-esm _bundles",
+    "compile": "npm run clean && tsc && tsc -m es6 --outDir lib-esm",
+    "debug": "karma start --singleRun=false --autoWatch=true --autoWatchInterval=1 --browsers=ChromeCanary",
+    "fixdts": "dts-downlevel 'lib/**/*.d.ts' 'lib-esm/**/*.d.ts'",
+    "fixmaps:bundle": "tweak_sourcemap_paths -a --include '_bundles/**/*.js.map'",
+    "fixmaps:lib": "tweak_sourcemap_paths -a --include 'lib/**/*.js.map' 'lib-esm/**/*.js.map'",
+    "install": "node migrate/migratewarn.js",
+    "prepublishOnly": "npm run build",
+    "release": "release",
+    "test": "karma start",
+    "watch": "run-p watch:*",
+    "watch:buildesm": "tsc -w -m es6 --outDir lib-esm",
+    "watch:buildjs": "tsc -w",
+    "watch:dts-downlevel": "npm run fixdts",
+    "watch:test": "karma start --singleRun=false --autoWatch=true --autoWatchInterval=1"
+  },
+  "typings": "lib/index.d.ts",
+  "version": "5.0.13"
+}

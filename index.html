@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="myApp">
+	<head>
+		<base href="/"></base>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog It!</title>
+		<link rel='stylesheet' href='modules/textangular/dist/textAngular.css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="modules/angular/angular.js"></script>
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>-->
+		<script type="text/javascript" src="//unpkg.com/@uirouter/angularjs@1.0.7/release/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="stamplay-js/dist/stamplay.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="modules/textangular/dist/textAngular-sanitize.min.js"></script>
+		<script type="text/javascript" src='modules/textangular/dist/textAngular-rangy.min.js'></script>
+		<script type="text/javascript" src='modules/textangular/dist/textAngular.min.js'></script>
+		<script type="text/javascript" src="modules/ng-toast/dist/ngToast.js"></script>
+	</head>
+
+	<body ng-controller="MainCtrl">
+		<!--Navigation(Menu) bar-->
+		<div ng-include="'structure/menu.html'"></div>
+		<!--Route View-->
+		<div ui-view></div>
+	</body>
+</html>
