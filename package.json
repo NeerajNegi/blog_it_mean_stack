@@ -1,0 +1,22 @@
+{
+  "name": "contactlist",
+  "version": "1.0.0",
+  "description": "simple mean application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Neeraj Negi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.2.0",
+    "mongodb": "^3.0.3",
+    "mongoose": "^5.0.7",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}

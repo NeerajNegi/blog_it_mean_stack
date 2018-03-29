@@ -1,0 +1,34 @@
+<toast></toast>
+<!--BlogIt Jumbotron-->
+<div ng-include="'../structure/jumbotron.html'"></div>
+<div class="container">
+	<form class="navbar-form pull-right" role="search">
+	    <div class="input-group add-on">
+	      <input class="form-control" placeholder="Search Blogs" ng-model="searchQuery" type="text">
+	      <div class="input-group-btn">
+	        <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+	      </div>
+	    </div>
+ 	</form>
+	<div class="row">
+		<div class="col-md-12">
+			<h1 style="margin-left: 15px;">Latest Posts</h1>
+			<hr>
+			<div class="panel-group">
+				<div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="blog in Blogs | filter: {title: searchQuery}" style="height:214px;">
+					<div class="panel panel-primary">
+				        <div class="panel-heading">{{blog.title}}</div>
+					    <div class="panel-body" ng-bind-html="blog.content | htmlToPlainText | limitTo: 100"></div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<a class="btn btn-xs btn-primary pull-right" href="#/view/{{blog._id}}">Read Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
