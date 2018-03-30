@@ -9,8 +9,7 @@ var path = require('path');
 var app = express();
 
 //mongodb links
-var MONGODB_URI = "mongodb://neerajnegi:yeschidori@ds153778.mlab.com:53778/blog_it";
-var MONGODB_LOCAL_URI = "mongodb://localhost:27017/blog_it";
+var MONGODB_URI = "mongodb://localhost:27017/blog_it";
 
 //importing routes
 const user = require('./routes/user');
