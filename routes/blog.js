@@ -73,6 +73,35 @@ router.post('/Blog',(req, res, next)=>{
 	});
 });
 
+//update blog
+router.post('/update/:id',(req, res, next)=>{
+	Blog.findOne({_id: req.params.id}, function(err, blog){
+		if(err){
+			console.log(err);
+			res.status(400).send({
+				message: "Error getting blog for updation."
+			});
+		} else {
+			blog.content = req.body.content;
+			blog.title = req.body.title;
+
+			blog.save((e, b)=>{
+				if(e){
+					console.log(e);
+					res.status(400).send({
+						message: "Error updating blog."
+					});
+				} else {
+					res.status(200).send({
+						message: "Blog successfully updated.",
+						blog: b
+					});
+				}
+			});
+		}
+	});
+});
+
 //upvote
 router.get('/upvote/:id',(req, res, next)=>{
 	console.log("up vote request acquired");

@@ -49,26 +49,35 @@ router.post('/login', (req, res)=>{
 
 //add user
 router.post('/signup',(req, res, next)=>{
-	let newUser = new User();
-
-	newUser.first_name = req.body.firstName,
-	newUser.last_name = req.body.lastName,
-	newUser.email = req.body.email
-
-	newUser.setPassword(req.body.password);
-
-	newUser.save( (err, User)=>{
-		if(err){
-			console.log(err);
-			return res.status(400).send({
-				message: "Failed to add user."
+	User.find({email: req.body.email}, function(err, user){
+		if(user !== null){
+			console.log("user already exist.");
+			res.status(400).send({
+				message: "User already exist."
 			});
 		} else {
-			return res.status(201).send({
-				message: "User added succesfully."
+			let newUser = new User();
+
+			newUser.first_name = req.body.firstName,
+			newUser.last_name = req.body.lastName,
+			newUser.email = req.body.email
+
+			newUser.setPassword(req.body.password);
+
+			newUser.save( (err, User)=>{
+				if(err){
+					console.log(err);
+					return res.status(400).send({
+						message: "Failed to add user."
+					});
+				} else {
+					return res.status(201).send({
+						message: "User added succesfully."
+					});
+				}
 			});
 		}
-	});
+	})
 });
 
 //deleting Users

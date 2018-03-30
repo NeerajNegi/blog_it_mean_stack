@@ -85,8 +85,8 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
     $http.get(url)
         .then(function(success) {
             $scope.blog = success.data.blog;
-            console.log("Blog retrieved successfully");
-            console.log($scope.blog);
+            //console.log("Blog retrieved successfully");
+            //console.log($scope.blog);
             $timeout(function() {
                 ngToast.create("Blog retrieved successfully.");
             });
@@ -97,7 +97,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
                     content: 'Some Error has occured'
                 });
             });
-            console.log("Some error has occured.");
+            //console.log("Some error has occured.");
         });
 
     $scope.upVote = function(){
@@ -114,7 +114,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
                 $http.get(url)
                     .then(function(success){
                         $scope.blog = success.data.blog;
-                        console.log("upvote success");
+                        //console.log("upvote success");
                     }, function(err){
                         $timeout(function() {
                             ngToast.create({
@@ -122,7 +122,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
                                 content: 'Some Error has occured'
                             });
                         });
-                        console.log("Some error has occured.");
+                       //console.log("Some error has occured.");
                     });
             }
         } else {
@@ -149,7 +149,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
                 $http.get(url)
                     .then(function(success){
                         $scope.blog = success.data.blog;
-                        console.log("downvote success");
+                        //console.log("downvote success");
                     }, function(err){
                         $timeout(function() {
                             ngToast.create({
@@ -157,7 +157,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
                                 content: 'Some Error has occured'
                             });
                         });
-                        console.log("Some error has occured.");
+                        //console.log("Some error has occured.");
                     });
             }
         } else {
@@ -172,7 +172,7 @@ app.controller('ViewCtrl', function(taOptions, $state, $scope, $stateParams, $ti
 
 });
 
-app.controller('EditCtrl', function(taOptions, $state, $scope, $stateParams, $timeout, ngToast) {
+app.controller('EditCtrl', function(taOptions, $state, $scope, $stateParams, $timeout, ngToast, $http) {
     $scope.Post = {};
     taOptions.toolbar = [
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
@@ -181,6 +181,43 @@ app.controller('EditCtrl', function(taOptions, $state, $scope, $stateParams, $ti
         ['html', 'insertLink', 'wordcount', 'charcount']
     ];
 
+    var url = "/api/blogs/Blog/" + $stateParams.id;
+    $http.get(url)
+        .then(function(success) {
+            $scope.Post = success.data.blog;
+            //console.log("Blog retrieved successfully");
+            //console.log($scope.Post);
+            $timeout(function() {
+                ngToast.create("Blog retrieved successfully.");
+            });
+        }, function(err) {
+            $timeout(function() {
+                ngToast.create({
+                    className: 'warning',
+                    content: 'Some Error has occured'
+                });
+            });
+            //console.log("Some error has occured.");
+        });
+
+    $scope.update = function(){
+        //console.log("update called");
+        var url = "/api/blogs/update/" + $stateParams.id;
+        $http.post(url, $scope.Post)
+        .then(function(success){
+            $state.go('MyBlogs');
+            $timeout(function() {
+                ngToast.create("Blog updated successfully.");
+            });
+        }, function(err){
+            $timeout(function() {
+                ngToast.create({
+                    className: 'warning',
+                    content: 'Some Error has occured'
+                });
+            });
+        })
+    }
 });
 
 app.controller('CreateCtrl', function(taOptions, $state, $scope, $timeout, ngToast, $http, $rootScope) {
@@ -194,7 +231,7 @@ app.controller('CreateCtrl', function(taOptions, $state, $scope, $timeout, ngToa
 
     $scope.create = function() {
 
-        console.log("Publish Button Pressed");
+       //console.log("Publish Button Pressed");
 
         if ($scope.newPost.title && $scope.newPost.content) {
             $scope.newPost.author_id = $rootScope.userId;
@@ -203,14 +240,15 @@ app.controller('CreateCtrl', function(taOptions, $state, $scope, $timeout, ngToa
             var url = "/api/blogs/Blog";
             $http.post(url, $scope.newPost)
                 .then(function(success) {
-                    console.log("Blog Added successfully");
-                    console.log(success);
+                    //console.log("Blog Added successfully");
+                    //console.log(success);
+                    $state.go('MyBlogs');
                     $timeout(function() {
                         ngToast.create('Blog Added!');
                     });
                 }, function(err) {
-                    console.log("Error adding Blog");
-                    console.log(err);
+                    //console.log("Error adding Blog");
+                    //console.log(err);
                     $timeout(function() {
                         ngToast.create({
                             className: 'warning',
@@ -230,7 +268,7 @@ app.controller('CreateCtrl', function(taOptions, $state, $scope, $timeout, ngToa
     }
 });
 app.controller('HomeCtrl', function($scope, $http, $rootScope, $state) {
-    $scope.Blogs = {};
+    $scope.Blogs = [];
     $scope.logout = function() {
         $rootScope.loggedIn = false;
     }
@@ -238,9 +276,9 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $state) {
     $http.get(url)
         .then(function(success) {
             $scope.Blogs = success.data.blogs;
-            console.log(success);
+            //console.log(success);
         }, function(err) {
-            console.log("err");
+            //console.log("err");
         });
 
     $state.go('home');
@@ -253,24 +291,24 @@ app.controller('LoginCtrl', function($rootScope, $scope, $state, $timeout, $root
     $scope.login = function() {
 
         if ($scope.user.email && $scope.user.password) {
-            console.log("All fields are valid");
+            //console.log("All fields are valid");
 
             var url = "api/user/login";
             $http.post(url, $scope.user)
                 .then(function(success) {
-                    console.log("User logged in");
+                    //console.log("User logged in");
                     $rootScope.displayName = success.data.displayName;
                     $rootScope.userId = success.data.id;
-                    console.log(success);
+                    //console.log(success);
                     $state.go('home');
                     $timeout(function() {
                         ngToast.create('User Logged In!');
                         $rootScope.loggedIn = true;
-                        console.log($rootScope.loggedIn);
+                        //console.log($rootScope.loggedIn);
                     });
                 }, function(err) {
-                    console.log("User not found or some error has occured.");
-                    console.log(err);
+                    //console.log("User not found or some error has occured.");
+                    //console.log(err);
                     $timeout(function() {
                         ngToast.create({
                             className: 'warning',
@@ -292,25 +330,25 @@ app.controller('SignupCtrl', function($scope, ngToast, $state, $http, $timeout) 
 
         //checking user inputed values
         if ($scope.newUser.firstName && $scope.newUser.lastName && $scope.newUser.email && $scope.newUser.password && $scope.newUser.confirmPassword) {
-            console.log("All fields are valid!");
-            console.log($scope.newUser);
+            //console.log("All fields are valid!");
+            //console.log($scope.newUser);
 
             //if values are valid then check for password match
             if ($scope.newUser.password == $scope.newUser.confirmPassword) {
-                console.log("All good! Let's sign up!");
+                //console.log("All good! Let's sign up!");
                 //creating new user
 
                 var url = "api/user/signup";
                 $http.post(url, $scope.newUser)
                     .then(function(success) {
-                        console.log(success);
-                        console.log("User added succesfully");
+                        //console.log(success);
+                        //console.log("User added succesfully");
                         $state.go('home');
                         $timeout(function() {
                             ngToast.create("User added successfully.");
                         });
                     }, function(error) {
-                        console.log(error);
+                        //console.log(error);
                         $timeout(function() {
                             ngToast.create(error.data.message);
                         });
@@ -320,14 +358,14 @@ app.controller('SignupCtrl', function($scope, ngToast, $state, $http, $timeout) 
                     className: 'warning',
                     content: 'Passwords do not match.'
                 });
-                console.log("Password do not match!");
+                //console.log("Password do not match!");
             }
         } else {
             ngToast.create({
                 className: 'warning',
                 content: 'Some Fields are invalid.'
             });
-            console.log("Some fields are invalid!");
+            //console.log("Some fields are invalid!");
         }
     };
 });
@@ -348,7 +386,7 @@ app.controller('MyBlogsCtrl', function($scope, $state, $rootScope, $http) {
 
 app.controller('MainCtrl', function($scope, $rootScope, $timeout, ngToast) {
     $scope.logout = function() {
-        console.log("logout called");
+        //console.log("logout called");
         $rootScope.loggedIn = false;
         ngToast.create({
             content: 'User Logged Out.'
