@@ -50,7 +50,7 @@ router.post('/login', (req, res)=>{
 //add user
 router.post('/signup',(req, res, next)=>{
 	User.find({email: req.body.email}, function(err, user){
-		if(user !== null){
+		if(user.length > 0){
 			console.log("user already exist.");
 			res.status(400).send({
 				message: "User already exist."
